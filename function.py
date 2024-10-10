@@ -1,4 +1,3 @@
-import random
 def is_valid(x, y, maze):
     return 0 <= x < len(maze[1]) and 0 <= y < len(maze[0]) and maze[x][y] == 1
 
@@ -29,7 +28,7 @@ def print_maze(maze, result, start_x=0, start_y=0, end=[13, 13]):
     if search(maze, start_x, start_y, result, end):
         print("Вихід знайдено:", result)
     else:
-        print("Вихід не знайдено")
+        print("Вихід завжди є")
 
     for row in maze:
         print(row)

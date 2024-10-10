@@ -1,6 +1,6 @@
 import pygame
 import numpy as np
-from function import search, is_valid, print_maze, hover_button
+from function import search, print_maze, hover_button
 
 pygame.init()
 font = pygame.font.Font("../maze/fonts/Roboto-Regular.ttf", 15)
@@ -81,6 +81,9 @@ def build_matrix_new(maze, grid):
             elif maze[y][x] == 4:
                 cell.wall = 4
 
+def clear(grid):
+    for cell in grid:
+        cell.wall = 0
 
 
 matrix = build_matrix(grid)
@@ -125,13 +128,13 @@ while running:
                         start_x = cell.x
                         start_y = cell.y
                         build_matrix(grid)
-                        print(start_x, start_y)
             elif event.key == pygame.K_w:
                 for cell in grid:
                     if cell.is_mouse_over(pos):
                         cell.wall = 4
                         end = [cell.y, cell.x]
                         build_matrix(grid)
-                        print(start_x, start_y)
+            elif event.key == pygame.K_c:
+                clear(grid)
 
 pygame.quit()
